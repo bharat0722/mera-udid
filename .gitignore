@@ -9,3 +9,5 @@ test-results/
 *.tsbuildinfo
 vite.pid
 .vercel
+
+.vercel
