@@ -1,0 +1,104 @@
+/* Design tokens — the single source of truth for the Mera UDID visual system.
+   Documented in STYLE.md. No screen may hard-code a colour, size or spacing value.
+
+   Visual language: the navy / white / saffron-accent family of Indian government
+   digital services, per UX4G. Blue is action and "happening now"; green is reserved
+   for success and completion; saffron is a decorative accent, never load-bearing.
+   No emblem, wordmark or flag device anywhere — patterns, not identity. */
+
+:root {
+  /* Colour — text and surfaces */
+  --ink: #171B26;
+  --ink-muted: #49546B;
+  --paper: #F1F4F7;
+  --surface: #FFFFFF;
+  --border: #D8DEE9;
+
+  /* Colour — primary (action, links, the current stage) */
+  --primary: #0B5AA5;
+  --primary-hover: #073F77;
+  --primary-tint: #E7F1FB;
+  --primary-tint-strong: #C9E0F5;
+
+  /* Colour — the dark header band */
+  --header-bg: #073763;
+  --header-ink: #FFFFFF;
+  --header-muted: #D0E2F2;
+
+  /* Colour — saffron accent. --accent is decorative only (keylines, hover edges);
+     --accent-ink is the only orange permitted to carry text. */
+  --accent: #E96A16;
+  --accent-ink: #8F3707;
+
+  /* Colour — success and completion (the old brand green, demoted to a semantic) */
+  --success: #0B5D3B;
+  --success-deep: #084A2F;
+  --success-tint: #EAF2ED;
+  --success-tint-strong: #D8E7DF;
+
+  /* Colour — informational callouts */
+  --info: #1B4D8F;
+  --info-bg: #EDF3FB;
+
+  /* Colour — warnings and failures */
+  --attention-bg: #FFF6E0;
+  --attention-ink: #7A5200;
+  --danger: #A32B1C;
+  --danger-bg: #FCEFED;
+
+  /* Focus ring — always painted over a dark edge, see base.css */
+  --focus: #FFBF47;
+
+  /* Type scale */
+  --font-stack: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans",
+    "Noto Sans Devanagari", Arial, sans-serif;
+  --text-display: 2.75rem;
+  --text-display-lh: 1.1;
+  --text-h1: 2rem;
+  --text-h1-lh: 1.2;
+  --text-h2: 1.5rem;
+  --text-h2-lh: 1.3;
+  --text-h3: 1.25rem;
+  --text-h3-lh: 1.4;
+  --text-body: 1.0625rem;
+  --text-body-lh: 1.6;
+  --text-small: 0.9375rem;
+  --text-small-lh: 1.5;
+
+  /* Spacing — the only permitted step values */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Radius */
+  --radius-card: 4px;
+  --radius-button: 4px;
+  --radius-chip: 999px;
+
+  /* Elevation */
+  --shadow-card: 0 1px 0 rgba(7, 55, 99, 0.08), 0 5px 14px rgba(7, 55, 99, 0.05);
+
+  /* Layout */
+  --container-max: 1200px;
+  --prose-max: 680px;
+  --column-max: 760px;
+  --gutter: 24px;
+  --section-rhythm: 96px;
+  --tap-min: 44px;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --text-display: 2rem;
+    --text-h1: 1.625rem;
+    --text-h2: 1.3125rem;
+    --gutter: 16px;
+    --section-rhythm: 64px;
+  }
+}
