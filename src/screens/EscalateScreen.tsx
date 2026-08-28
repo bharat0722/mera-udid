@@ -58,6 +58,7 @@ export function EscalateScreen({ applicationId }: { applicationId: string }) {
             </strong>
           </p>
         </div>
+        <p className="small muted">{t.escalate.notTransmitted}</p>
         <p>
           <Link to={`/track/${applicationId}`} className="btn btn--primary">
             {t.escalate.backToCase}
@@ -183,6 +184,7 @@ export function EscalateScreen({ applicationId }: { applicationId: string }) {
               </dd>
             </div>
           </dl>
+          <p className="small muted">{t.escalate.notTransmitted}</p>
 
           <div className="field" style={{ maxWidth: "none" }}>
             <label className="field__label" htmlFor="escalation-note">
