@@ -756,6 +756,20 @@
   .campaign__content .hero__actions .btn {
     width: 100%;
   }
+
+  /* All campaign artwork sits in the same visual window on a phone. Source
+     illustrations have different proportions; without a fixed frame, a taller
+     illustration can push the carousel controls below the first viewport. */
+  .campaign__image {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .campaign__image img {
+    display: block;
+    min-height: 0;
+    height: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
