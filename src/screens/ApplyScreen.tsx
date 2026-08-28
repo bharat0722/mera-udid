@@ -22,6 +22,11 @@ const assistedServiceDesk = new URL("../assets/assisted-service-desk.webp", impo
 
 const DRAFT_KEY = "mera-udid.draft";
 
+/** Keep numeric fields honest as they are typed or pasted, before validation is needed. */
+function digitsOnly(value: string, maximumLength: number): string {
+  return value.replace(/\D/g, "").slice(0, maximumLength);
+}
+
 interface Draft {
   step: number;
   name: string;
@@ -115,7 +120,7 @@ export function ApplyScreen() {
     if (step === 0) {
       if (draft.name.trim().length < 2) found.name = t.apply.validation.name;
       const age = Number(draft.age);
-      if (!draft.age || Number.isNaN(age) || age < 0 || age > 120) {
+      if (!draft.age || !Number.isInteger(age) || age < 0 || age > 120) {
         found.age = t.apply.validation.age;
       }
       if (!draft.district) found.district = t.apply.validation.district;
@@ -386,7 +391,8 @@ export function ApplyScreen() {
             value={draft.age}
             error={errors.age}
             inputMode="numeric"
-            onChange={(value) => update("age", value)}
+            maxLength={3}
+            onChange={(value) => update("age", digitsOnly(value, 3))}
           />
 
           <fieldset>
@@ -435,7 +441,8 @@ export function ApplyScreen() {
             value={draft.phone}
             error={errors.phone}
             inputMode="tel"
-            onChange={(value) => update("phone", value)}
+            maxLength={10}
+            onChange={(value) => update("phone", digitsOnly(value, 10))}
           />
 
           <fieldset>
@@ -488,7 +495,8 @@ export function ApplyScreen() {
                 value={draft.assistedPhone}
                 error={errors.assistedPhone}
                 inputMode="tel"
-                onChange={(value) => update("assistedPhone", value)}
+                maxLength={10}
+                onChange={(value) => update("assistedPhone", digitsOnly(value, 10))}
               />
             </>
           )}
@@ -746,10 +754,11 @@ interface TextFieldProps {
   value: string;
   error?: string;
   inputMode?: "numeric" | "tel" | "text";
+  maxLength?: number;
   onChange: (value: string) => void;
 }
 
-function TextField({ id, label, hint, value, error, inputMode, onChange }: TextFieldProps) {
+function TextField({ id, label, hint, value, error, inputMode, maxLength, onChange }: TextFieldProps) {
   const hintId = hint ? `${id}-hint` : undefined;
   const errorId = error ? `${id}-error` : undefined;
   const describedBy = [hintId, errorId].filter(Boolean).join(" ") || undefined;
@@ -775,6 +784,8 @@ function TextField({ id, label, hint, value, error, inputMode, onChange }: TextF
         className="input"
         value={value}
         inputMode={inputMode}
+        maxLength={maxLength}
+        pattern={inputMode === "numeric" || inputMode === "tel" ? "[0-9]*" : undefined}
         aria-describedby={describedBy}
         aria-invalid={error ? true : undefined}
         onChange={(event) => onChange(event.target.value)}
