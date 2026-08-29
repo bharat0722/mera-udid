@@ -1618,6 +1618,36 @@ legend {
   background: #f8fafb;
 }
 
+/* Queue toggles deliberately share the height and baseline of the selects beside
+   them. They remain full-label controls so the target is still generous. */
+.officer-console__filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 4rem;
+  padding-inline: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.officer-console__filter-toggle:hover,
+.officer-console__filter-toggle--selected {
+  border-color: var(--primary);
+  background: var(--primary-tint);
+}
+
+.officer-console__filter-toggle input {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  flex: none;
+  accent-color: var(--primary);
+}
+
 .officer-console__action > .card {
   border-left: 5px solid var(--primary);
 }

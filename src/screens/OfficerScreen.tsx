@@ -423,26 +423,22 @@ export function OfficerScreen() {
           </select>
         </div>
 
-        <label className={`choice${breachedOnly ? " choice--selected" : ""}`} style={{ maxWidth: "18rem" }}>
+        <label className={`officer-console__filter-toggle${breachedOnly ? " officer-console__filter-toggle--selected" : ""}`}>
           <input
             type="checkbox"
             checked={breachedOnly}
             onChange={() => setBreachedOnly((current) => !current)}
           />
-          <span className="choice__text">
-            <span className="choice__title">Only cases past the target</span>
-          </span>
+          <span>Only cases past the target</span>
         </label>
 
-        <label className={`choice${escalatedOnly ? " choice--selected" : ""}`} style={{ maxWidth: "18rem" }}>
+        <label className={`officer-console__filter-toggle${escalatedOnly ? " officer-console__filter-toggle--selected" : ""}`}>
           <input
             type="checkbox"
             checked={escalatedOnly}
             onChange={() => setEscalatedOnly((current) => !current)}
           />
-          <span className="choice__text">
-            <span className="choice__title">Only escalated cases</span>
-          </span>
+          <span>Only escalated cases</span>
         </label>
       </div>
 
